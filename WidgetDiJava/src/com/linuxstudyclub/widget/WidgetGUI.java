@@ -9,14 +9,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 
 
 public class WidgetGUI extends javax.swing.JDialog 
 {    
     int width = (Toolkit.getDefaultToolkit().getScreenSize().width/2);
-    int x;
-    int y;
+    int xDef;
+    int yDef;
     JDialog home = this;
     public WidgetGUI(java.awt.Frame parent, boolean modal) 
     {
@@ -55,6 +56,12 @@ public class WidgetGUI extends javax.swing.JDialog
         YouTube.setAutoscrolls(true);
         YouTube.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         YouTube.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                YouTubeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                YouTubeMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 YouTubeMouseClicked(evt);
             }
@@ -64,6 +71,12 @@ public class WidgetGUI extends javax.swing.JDialog
         Amazon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/linuxstudyclub/widget/Amazon.png"))); // NOI18N
         Amazon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Amazon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AmazonMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                AmazonMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AmazonMouseClicked(evt);
             }
@@ -73,6 +86,12 @@ public class WidgetGUI extends javax.swing.JDialog
         Twitter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/linuxstudyclub/widget/Twitter.png"))); // NOI18N
         Twitter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Twitter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TwitterMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TwitterMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TwitterMouseClicked(evt);
             }
@@ -82,6 +101,12 @@ public class WidgetGUI extends javax.swing.JDialog
         Facebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/linuxstudyclub/widget/Facebook.png"))); // NOI18N
         Facebook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Facebook.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                FacebookMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                FacebookMouseReleased(evt);
+            }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FacebookMouseClicked(evt);
             }
@@ -139,16 +164,64 @@ public class WidgetGUI extends javax.swing.JDialog
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-        x = evt.getX();
-        y = evt.getY();
+        xDef = evt.getX();
+        yDef = evt.getY();
     }//GEN-LAST:event_formMouseClicked
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
-        x = evt.getXOnScreen();
-        y = evt.getYOnScreen();
-        this.setLocation(x, y);
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xDef, y - yDef);
     }//GEN-LAST:event_formMouseDragged
+
+    private void FacebookMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacebookMousePressed
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("FacebookPressed.png"));
+        Facebook.setIcon(II);
+    }//GEN-LAST:event_FacebookMousePressed
+
+    private void FacebookMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacebookMouseReleased
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("Facebook.png"));
+        Facebook.setIcon(II);
+    }//GEN-LAST:event_FacebookMouseReleased
+
+    private void TwitterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TwitterMousePressed
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("TwitterPressed.png"));
+        Twitter.setIcon(II);
+    }//GEN-LAST:event_TwitterMousePressed
+
+    private void TwitterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TwitterMouseReleased
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("Twitter.png"));
+        Twitter.setIcon(II);
+    }//GEN-LAST:event_TwitterMouseReleased
+
+    private void AmazonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AmazonMousePressed
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("AmazonPressed.png"));
+        Amazon.setIcon(II);
+    }//GEN-LAST:event_AmazonMousePressed
+
+    private void AmazonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AmazonMouseReleased
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("Amazon.png"));
+        Amazon.setIcon(II);
+    }//GEN-LAST:event_AmazonMouseReleased
+
+    private void YouTubeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YouTubeMousePressed
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("YouTubePressed.png"));
+        YouTube.setIcon(II);
+    }//GEN-LAST:event_YouTubeMousePressed
+
+    private void YouTubeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YouTubeMouseReleased
+        // TODO add your handling code here:
+        ImageIcon II = new ImageIcon(getClass().getResource("YouTube.png"));
+        YouTube.setIcon(II);
+    }//GEN-LAST:event_YouTubeMouseReleased
 
     public static void main(String args[]) 
     {

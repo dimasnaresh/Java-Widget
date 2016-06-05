@@ -11,10 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 
-/**
- *
- * @author Mayur (IamTeknik)
- */
 
 public class WidgetGUI extends javax.swing.JDialog 
 {    
@@ -27,55 +23,7 @@ public class WidgetGUI extends javax.swing.JDialog
         super(parent, modal);
         initComponents();
         this.setLocation(1366/2, HEIGHT);
-        setAction();
-        
     }
-    
-    private void setAction(){
-        Background.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                x =  e.getX();
-                y = e.getY();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                
-            }
-        });
-        
-        Background.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                x = e.getXOnScreen();
-                y = e.getYOnScreen();
-                
-                home.setLocation(x, y);
-            }
-
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                
-            }
-        });
-    }
-
     @SuppressWarnings("unchecked")
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -91,6 +39,16 @@ public class WidgetGUI extends javax.swing.JDialog
         setTitle("Widget");
         setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         YouTube.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/linuxstudyclub/widget/YouTube.png"))); // NOI18N
@@ -178,6 +136,19 @@ public class WidgetGUI extends javax.swing.JDialog
             Logger.getLogger(WidgetGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_YouTubeMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        // TODO add your handling code here:
+        x = evt.getXOnScreen();
+        y = evt.getYOnScreen();
+        this.setLocation(x, y);
+    }//GEN-LAST:event_formMouseDragged
 
     public static void main(String args[]) 
     {
